@@ -1,0 +1,31 @@
+/* 所有标签的内外边距清0 */
+*{
+    margin: 0;
+    padding: 0;
+}
+#box{
+    width: 950px;
+    height: auto;
+    margin: 50px auto;
+}
+#box ul li{
+    list-style: none; /*  去除前面的小黑点 */
+    width: 288px;
+    height: 180px;
+    float: left;
+    margin: 10px;
+}
+#box ul li img{
+    /* 浏览器加载图片一边计算图片宽高一边从上往下加载图片，规定图片宽高，能提高浏览器效率  */
+    width: 288px;
+    height: 180px;
+}
+#box ul li:hover img{
+    opacity: 0.7;/*透明度0-1*/
+    cursor: pointer;
+}
+/*
+ 网站性能优化：
+ 1.能用css实现的效果就不用js
+ 2.能不到服务器请求的就不到服务器（减少向服务器请求的次数）-图片懒加载效果
+ */

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瑞丽网无缝轮播</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div class="list">
+    <!-- 左边切换  -->
+    <div class="btn_left"><img src="images/leftArrow.png" class="prev"></div>
+    <!-- 右边切换  -->
+    <div class="btn_right"><img src="images/rightArrow.png" class="next"></div>
+    <!--  图片展示区 -->
+    <div class="imglist">
+        <div class="list1">
+            <ul>
+                <li>
+                    <div class="img_left"><img src="images/1.jpg"></div>
+                    <div class="img_right"><img src="images/1.jpg"></div>
+                </li>
+                <li>
+                    <div class="img_left"><img src="images/2.jpg"></div>
+                    <div class="img_right"><img src="images/2.jpg"></div>
+                </li>
+                <li>
+                    <div class="img_left"><img src="images/3.jpg"></div>
+                    <div class="img_right"><img src="images/3.jpg"></div>
+                </li>
+                <li>
+                    <div class="img_left"><img src="images/4.jpg"></div>
+                    <div class="img_right"><img src="images/4.jpg"></div>
+                </li>
+
+                <li>
+                    <div class="img_left"><img src="images/5.jpg"></div>
+                    <div class="img_right"><img src="images/5.jpg"></div>
+                </li>
+                <li>
+                    <div class="img_left"><img src="images/6.jpg"></div>
+                    <div class="img_right"><img src="images/6.jpg"></div>
+                </li>
+                <li>
+                    <div class="img_left"><img src="images/7.jpg"></div>
+                    <div class="img_right"><img src="images/7.jpg"></div>
+                </li>
+                <li>
+                    <div class="img_left"><img src="images/8.jpg"></div>
+                    <div class="img_right"><img src="images/8.jpg"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 引入js文件 -->
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script>
+    //alert($);
+    var _index = 0; // 移动多少距离的序列号
+    $('.prev').click(function(){
+        _index--;
+        if(_index < 1){
+            _index = 7;
+            $('.list1 ul').css({'left':'-6980px'}); // 6980px=li的宽度1020px*8张图-DIV.list1的宽度1180=6980px
+        }else{
+            $('.list1 ul').animate({left:-_index*1020},200);
+        }
+    });
+    $('.next').click(function(){
+        _index++;
+        if(_index > 7){
+            _index = 1;
+            $('.list1 ul').css({'left':'0px'});
+        }else{
+            $('.list1 ul').animate({left:-_index*1020},200);
+        }
+    });
+    //   鼠标悬停停止播放
+    $('.prev,.next').hover(function(){
+        clearInterval(clearTime);
+    },function(){
+        autoplay();
+    });
+//    自动播放
+    function autoplay(){
+        clearTime = setInterval(function(){  // 设成全局变量方便外部访问
+            _index++;
+            if(_index > 7){
+                _index = 1;
+                $('.list1 ul').css({'left':'0px'});
+            }else{
+                $('.list1 ul').animate({left:-_index*1020},200);
+            }
+        },2000)
+    };
+    autoplay();
+</script>
+</body>
+</html>

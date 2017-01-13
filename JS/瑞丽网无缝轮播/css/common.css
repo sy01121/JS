@@ -1,0 +1,79 @@
+/* 解决浏览器兼容性问题 */
+* {
+    margin: 0;
+    padding: 0;
+}
+.list{
+    width: 1180px;
+    height: 500px;
+    margin: 100px auto;
+    position: relative;
+}
+.btn_left,.btn_right{
+    width: 80px;
+    height: 500px;
+    background-color: rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 2;
+}
+.btn_left{
+    float: left;
+}
+.btn_right{
+    float: right;
+}
+.btn_left img,.btn_right img{
+    width: 38px;
+    height: 87px;
+    position: absolute;
+    left: 21px;
+    top: 50%;
+    margin-top: -43.5px;
+    cursor: pointer;
+}
+.imglist{
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.list1{
+    width: 1180px;
+    height: 500px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.list1 ul{
+    width: 1000%;
+    height: 500px;
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.list1 ul li{
+    list-style: none;
+    float: left;
+}
+.list1 ul li .img_left{
+    width: 360px;
+    height: 480px;
+    float: left;
+    border: solid 5px #000;
+    border-bottom-width: 10px;
+    border-top-width: 10px;
+}
+.list1 ul li .img_right{
+    width: 640px;
+    height: 480px;
+    float: left;
+    border: solid 5px #000;
+    border-bottom-width: 10px;
+    border-top-width: 10px;
+}
+.list1 ul li div img{
+    width: 100%;
+    height: 480px;
+}

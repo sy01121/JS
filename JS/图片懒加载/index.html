@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片懒加载技术</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="box">
+    <ul>
+        <!-- 图片标签的四要素：src（路径）width height alt（解释说明，用于抓取图片） -->
+        <li><img src="images/1.jpg"></li>
+        <li><img src="images/2.jpg"></li>
+        <li><img src="images/3.jpg"></li>
+        <li><img src="images/4.jpg"></li>
+        <li><img src="images/5.jpg"></li>
+        <li><img src="images/6.jpg"></li>
+        <li><img src="images/7.jpg"></li>
+        <li><img src="images/8.jpg"></li>
+        <li><img src="images/9.jpg"></li>
+        <li><img src="images/10.jpg"></li>
+        <li><img src="images/11.jpg"></li>
+        <li><img src="images/12.jpg"></li>
+        <li><img src="images/13.jpg"></li>
+        <li><img src="images/14.jpg"></li>
+        <li><img src="images/15.jpg"></li>
+        <li><img src="images/16.jpg"></li>
+        <li><img src="images/17.jpg"></li>
+        <li><img src="images/18.jpg"></li>
+        <li><img src="images/19.jpg"></li>
+        <li><img src="images/20.jpg"></li>
+        <li><img src="images/21.jpg"></li>
+        <li><img src="images/22.jpg"></li>
+        <li><img src="images/23.jpg"></li>
+    </ul>
+</div>
+<!-- 引入jQuery  -->
+<script src="js/jquery.js"></script>
+<script src="js/lazyload.js"></script>
+<script type="text/javascript">
+    //弹出jq的代理函数
+   // console.log($);  // function (a,b){return new c.fn.init(a,b)}
+    // 更改jQuery的$对象
+    var lazyload = $.noConflict(); // 执行完后 变量lazyload相当于jQuery的$
+    lazyload(function(){  // 预加载（等待页面内容全部加载完成再执行里面的函数）
+        //lazyload('img')获取所有的图片标签元素
+        lazyload('img').lazyload({
+            placeholder : 'images/loading.png'
+        });
+    });
+</script>
+</body>
+</html>

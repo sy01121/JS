@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大型商城产品展示台拖拽效果</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="box"><!-- 见名知意，id唯一的，class 可重复的 -->
+    <div class="img">
+        <img src="images/1.png">
+        <img src="images/2.png"> <!-- 1.png与2.png换行后之间的空格会被浏览器解析成一个空格的间距 -->
+        <img src="images/3.png">
+        <img src="images/4.png">
+        <img src="images/5.png">
+        <img src="images/6.png">
+        <img src="images/7.png">
+        <img src="images/8.png">
+        <img src="images/9.png">
+        <img src="images/10.png">
+        <img src="images/11.png">
+        <img src="images/12.png">
+        <img src="images/13.png">
+        <img src="images/14.png">
+    </div>
+    <div class="nav">
+        <div class="moveBar">
+            <div class="move"></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script>
+    // alert($); // 弹出jQuery的代理函数$
+    var m = $('.moveBar').offset().left; // 获取滚动槽离浏览器左侧的距离
+    var w = $('.img').width(); // 获取图片容器的宽度
+    var sw = $(window).width(); // 获取浏览器窗口的宽度
+    window.onresize = function(){  // 浏览器窗口缩放触发
+        //alert(123);
+        // 与浏览器有关的距离都要重新获取
+        m = $('.moveBar').offset().left;
+        sw = $(window).width();
+    };
+    //(w-sw)原因：初始状态div.img就满屏显示，显示部分不参与底部协同滚动
+    var p = (w-sw)/524; // 524=div.moveBar的宽度572px - div.move的宽度48px
+    $('.moveBar .move').mousedown(function(){  // 鼠标按下去实现什么效果
+        var isMove = true; // 是否移动的开关
+        $(document).mousemove(function(event){  // 鼠标移动实现什么效果
+            // 获取鼠标的位置，设置event鼠标事件
+            var x = event.pageX; // 鼠标的坐标X（鼠标距离浏览器左侧的距离）
+            if(isMove){
+                if(x > 524+m){  // 524=div.moveBar的宽度572px - div.move的宽度48px
+                    x = 524+m;
+                }else if(x < m){
+                    x = m;
+                }
+                $('.moveBar .move').css('left',x-m);
+                $('.img').css('left',-(x-m)*p);
+            }
+        }).mouseup(function(){
+            isMove = false;
+        });
+    });
+</script>
+</body>
+</html>

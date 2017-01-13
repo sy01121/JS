@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义相册</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<!-- 图片布局效果开始 -->
+<div class="con">
+    <ul>
+        <li><img src="images/1.jpg" bigSrc="images/1.jpg"></li>
+        <li><img src="images/2.jpg" bigSrc="images/2.jpg"></li>
+        <li><img src="images/3.jpg" bigSrc="images/3.jpg"></li>
+        <li><img src="images/4.jpg" bigSrc="images/4.jpg"></li>
+        <li><img src="images/5.jpg" bigSrc="images/5.jpg"></li>
+        <li><img src="images/6.jpg" bigSrc="images/6.jpg"></li>
+        <li><img src="images/7.jpg" bigSrc="images/7.jpg"></li>
+        <li><img src="images/8.jpg" bigSrc="images/8.jpg"></li>
+        <li><img src="images/9.jpg" bigSrc="images/9.jpg"></li>
+    </ul>
+</div>
+<!-- 图片布局效果结束 -->
+
+<!-- 灰色涂层开始 -->
+<div class="gray"></div>
+<!-- 灰色涂层结束 -->
+
+<!-- 图片切换  -->
+<div class="showImg">
+    <img src="images/1.jpg" class="bigImg">
+    <img src="images/leftArrow.png" class="dirl">
+    <img src="images/rightArrow.png" class="dirr">
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script>
+    $(function(){
+        //alert('123');
+        var bigSrc = null; //赋值前先清空
+        var index = 0; // .con ul li数组下标(索引)
+        // 小图赋给大图
+        $('.con ul li').click(function(){
+            //alert(123);
+            $('.gray').show();
+            $('.showImg').show();
+            bigSrc = $(this).children('img').attr('bigSrc');
+            console.log(bigSrc);
+            $('.showImg .bigImg').prop('src',bigSrc);
+            index = $(this).index();  // .index()查找元素的索引值
+        });
+
+        // 左切换按钮效果
+        $('.showImg .dirl').click(function(){
+            index--;
+            if(index<0){
+                index=0;
+                alert('已经是第一张图片！');
+            }else{
+                bigSrc=$('.con ul li').eq(index).children('img').attr('bigSrc');
+                $('.showImg .bigImg').prop('src',bigSrc);
+            }
+        });
+
+        // 右切换按钮效果
+        $('.showImg .dirr').click(function(){
+            index++;
+            // 获得当前li的个数
+            var len = $('.con ul li').length -1; // 设置len变量，变灵活，增加图片自动获取所有图片的个数
+            if(index > len){
+                index = len;
+                alert('已经是最后一张图片！');
+            }else{
+                bigSrc=$('.con ul li').eq(index).children('img').attr('bigSrc');
+                $('.showImg .bigImg').prop('src',bigSrc);
+            }
+        });
+
+        //点击灰色阴影区隐藏弹窗
+        // ‘灰色图层’与‘图片切换’盒子分开
+        // 如果‘灰色图层’盒子包含‘图片切换’盒子点击‘图片切换’盒子里的‘左右箭头切换’相当于点击‘灰色图层’盒子，
+        // 则整个‘弹窗’隐藏，不能达到切换效果，分开很棒！
+        $('.gray').click(function(){
+            $('.showImg').hide();
+            $(this).hide();
+        });
+    });
+</script>
+</body>
+</html>
