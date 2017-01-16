@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.box,.banner,.banner ul li{
+    width: 100%;
+    height: 600px;
+}
+.box{
+    /* 相对定位 参考物 */
+    position: relative;
+}
+.banner{
+    overflow: hidden;
+}
+.banner ul li{
+    list-style: none;
+}
+.banner ul li.s-li1{
+    background: url("../images/bg1.jpg") center no-repeat;
+}
+.banner ul li.s-li2{
+    background: url("../images/bg2.jpg") center no-repeat;
+}
+.banner ul li.s-li3{
+    background: url("../images/bg3.jpg") center no-repeat;
+}
+.banner ul li.s-li4{
+    background: url("../images/bg4.jpg") center no-repeat;
+}
+.banner ul li.s-li5{
+    background: url("../images/bg5.jpg") center no-repeat;
+}
+.banner ul li.s-li6{
+    background: url("../images/bg6.jpg") center no-repeat;
+}
+.banner ul li.s-li7{
+    background: url("../images/bg7.jpg") center no-repeat;
+}
+.banner ul li.s-li8{
+    background: url("../images/bg8.jpg") center no-repeat;
+}
+.banner ul li.s-li9{
+    background: url("../images/bg9.jpg") center no-repeat;
+}
+/* start btn */
+.btn{
+    width: 1086px;
+    height: 100px;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    left: 50%;
+    margin-left: -543px;
+    top: 500px;
+}
+.btn ul li{
+    width: 100px;
+    height: 60px;
+    float: left;
+    list-style: none;
+    margin-top: 40px;
+    margin-left: 18px;
+    cursor: pointer;
+}
+.btn ul li.s-btnLi1{
+    background: url("../images/nav1.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi2{
+    background: url("../images/nav2.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi3{
+    background: url("../images/nav3.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi4{
+    background: url("../images/nav4.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi5{
+    background: url("../images/nav5.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi6{
+    background: url("../images/nav6.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi7{
+    background: url("../images/nav7.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi8{
+    background: url("../images/nav8.jpg") center no-repeat;
+}
+.btn ul li.s-btnLi9{
+    background: url("../images/nav9.jpg") center no-repeat;
+}
+.btn ul li.bg{
+    margin-top: 30px;
+    border: solid 2px #0099ff;
+    box-shadow: 0 0 5px #fff; /* 边框阴影 */
+}

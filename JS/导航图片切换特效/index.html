@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>迅雷看看导航图片切换特效</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div class="box">
+    <!--  导航大图部分 -->
+    <div class="banner">
+        <ul>
+            <li class="s-li1"></li>
+            <li class="s-li2"></li>
+            <li class="s-li3"></li>
+            <li class="s-li4"></li>
+            <li class="s-li5"></li>
+            <li class="s-li6"></li>
+            <li class="s-li7"></li>
+            <li class="s-li8"></li>
+            <li class="s-li9"></li>
+        </ul>
+    </div>
+    <!--  导航小图按钮部分 -->
+    <div class="btn">
+        <ul>
+            <li class="s-btnLi1 bg"></li>
+            <li class="s-btnLi2"></li>
+            <li class="s-btnLi3"></li>
+            <li class="s-btnLi4"></li>
+            <li class="s-btnLi5"></li>
+            <li class="s-btnLi6"></li>
+            <li class="s-btnLi7"></li>
+            <li class="s-btnLi8"></li>
+            <li class="s-btnLi9"></li>
+        </ul>
+    </div>
+</div>
+
+<!-- 引入js文件 -->
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script>
+    // 测试引入jQuery插件是否成功
+    // alert($);
+    var _index = 0; // 定义一个下标全局变量为0
+    $('.btn ul li').hover(function(){
+        clearInterval(clearTime);
+        _index = $(this).index(); // 获取下标
+        $(this).addClass('bg').siblings().removeClass('bg');
+        // fadeIn()淡入  fadeOut()淡出
+        $('.banner ul li').eq(_index).fadeIn(500).siblings().fadeOut(500); // 点到的大图显示，不点的都隐藏
+    },function(){
+        autoPlay();
+    });
+    function autoPlay(){
+        clearTime = setInterval(function(){
+            _index++;
+            if(_index>8){
+                _index = 0;
+            };
+            $('.btn ul li').eq(_index).addClass('bg').siblings().removeClass('bg');
+            $('.banner ul li').eq(_index).fadeIn(500).siblings().fadeOut(500);
+        },2000);
+    };
+    autoPlay();
+</script>
+</body>
+</html>
