@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>烟花效果</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript">
+        // 生成随机颜色
+//        function Color(){
+//            var str = (Math.random()*16777215).toString(16);
+//            return str;
+//        }
+        // ev 参数就是鼠标点击事件对象
+        document.onclick = function(ev){
+            // alert('123');
+            var oEvent = ev || event; // 解决浏览器的兼容性
+            var l = oEvent.clientX;
+            var t = oEvent.clientY;
+            // 定义一个用于保存定时器的变量
+            var timer = null;
+            var oDiv = document.createElement('div');
+            oDiv.style.width = '4px';
+            oDiv.style.height = '30px';
+            oDiv.style.background = 'red';
+            oDiv.style.left = l+'px';
+            oDiv.style.top = document.documentElement.clientHeight+'px';
+            document.body.appendChild(oDiv);
+            // js实现动画用 定时器
+            timer = setInterval(function(){
+                oDiv.style.top = oDiv.offsetTop-20+'px';
+                if(oDiv.offsetTop<=t){
+                    clearInterval(timer);
+                    // 移除oDiv
+                    document.body.removeChild(oDiv);
+                    var i = 0;
+                    // 盛放烟花碎片的数组
+                    var aDiv = [];
+                    for(i=0;i<50;i++){
+                        var iDiv = document.createElement('div');
+                        iDiv.style.width = '4px';
+                        iDiv.style.height = '4px';
+                        iDiv.style.background = 'red';
+                        iDiv.style.left = l+'px';
+                        iDiv.style.top = t+'px';
+                        document.body.appendChild(iDiv);
+                        aDiv.push(iDiv);
+                        iDiv.speedX = Math.random()*40-20; // 抛物线的半径
+                        iDiv.speedY = Math.random()*40-20;
+                        // 生成随机颜色
+                        var str = parseInt(Math.random()*16777215);
+                        iDiv.hue = str.toString(16);
+                    }
+                    // 另一个定时器
+                    var newTimer = setInterval(function(){
+                        for(var i=0;i<aDiv.length;i++){
+                            aDiv[i].style.left = aDiv[i].offsetLeft+aDiv[i].speedX+'px';
+                            aDiv[i].style.top = aDiv[i].offsetTop+aDiv[i].speedY+'px';
+                            aDiv[i].speedY++;
+                            aDiv[i].style.background = '#'+aDiv[i].hue;
+                            // aDiv[i].offsetTop的每个值不固定，其中有一个大于document.documentElement.clientHeight
+                            // 立马就停止其他烟花彩点（aDiv[i]）定格在屏幕上，而aDiv[i].speedY++不断增加相对固定
+                            //当aDiv[i].speedY=document.documentElement.clientHeight最高的aDiv[i].offsetTop=0都掉下去了，其他更掉下去了
+                            if(aDiv[i].speedY>=document.documentElement.clientHeight){
+                                clearInterval(newTimer);
+                                for(var i=0;i<aDiv.length;i++){
+                                    document.body.removeChild(aDiv[i]);
+                                }
+                            }
+                        }
+                    },30);
+                }
+            },30);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>
