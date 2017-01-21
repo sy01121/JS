@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.dl{
+    background: #ffcc00;
+    width: 40px;
+}
+.bg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.con{
+    width: 600px;
+    height: 400px;
+    background: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.title{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background-color: #ff9933;
+    color: #FFF;
+    font-weight: bold;
+    font-family: "Microsoft YaHei";
+    text-indent: 20px; /*  首行缩进 */
+    cursor: move;  /* 十字架型 */
+}
+.title span.close{
+    display: block;
+    width: 17px;
+    height: 18px;
+    background: url("../images/close.png");
+    float: right;
+    margin: 14px 20px 0 0;
+    cursor: pointer;
+}
+.text{
+    color: #666;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    line-height: 30px;
+    padding: 10px 20px;
+}
+.text img{
+    width: 40px;
+    height: 40px;
+    align:absmiddle;
+}
+.lg{
+    width: 315px;
+    height: 190px;
+    margin: 0 auto;
+}
+.lg p{
+    margin-bottom: 15px;
+    color: #000;
+}
+.lg p input{
+    width: 260px;
+    height: 35px;
+    margin-left: 10px;
+    border: solid 1px #666;
+}
+.lg p input.su{
+    background: url("../images/but_bg1.jpg");
+    border: none;
+    margin-left: 40px;
+}

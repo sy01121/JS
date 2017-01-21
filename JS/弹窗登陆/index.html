@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js弹出登录</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<!-- 登录点击按钮开始 -->
+<p class="dl">登录</p>
+<!-- 登录点击按钮结束 -->
+<!-- 遮罩层开始  -->
+<div class="bg"></div>
+<!-- 遮罩层结束  -->
+<!-- 登录框开始  -->
+<div class="con">
+    <!-- 登录开始  -->
+    <div class="title">
+        用户登录
+        <span class="close"></span>
+    </div>
+    <!-- 登录结束  -->
+    <div class="text">
+        <img src="images/new.png">练习！！！可拖动的登录弹窗练习！！！可拖动的登录弹窗练习！！！可拖动的登录弹窗练习！！！可拖动的登录弹窗练习！！！
+    </div>
+    <div class="lg">
+        <form>
+            <p>账号<input type="text" class="te"></p>
+            <p>密码<input type="password" class="pa"></p>
+            <p><input type="submit" class="su" value=""></p>
+        </form>
+    </div>
+</div>
+<!-- 登录框结束  -->
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script>
+    // 登录框定位
+    function autoplay(){
+        w_h = $(window).height(); // 获取浏览器高度
+        w_w = $(window).width(); // 获取浏览器宽度
+        c_w = $('.con').width();   // 获取登录框的宽度
+        c_h = $('.con').height();   // 获取登录框的高度
+        t = w_h/2-c_h/2; // 登录框上边距离
+        l = w_w/2-c_w/2; // 登录框左边距离
+        $('.con').css({top:t+'px',left:l+'px'});
+    }
+    autoplay();
+    // 浏览器窗口改变
+    $(window).resize(function(){
+        autoplay();
+    });
+    // 点击显示
+    $('.dl').click(function(){
+        $('.bg').show();
+        $('.con').show();
+    });
+    // 点击关闭
+    $('.close').click(function(){
+        $('.bg').hide();
+        $('.con').hide();
+    });
+    // 鼠标拖动
+    // e参数是mousedown事件参数
+    $('.title').mousedown(function(event){
+        var e = event || window.event; // 为了兼容ie和火狐
+        var s_l = e.clientX; // 获取鼠标左边距离
+        var s_t = e.clientY; // 获取鼠标上边距离
+        var L = s_l - l;
+        var T = s_t - t;
+        $(window).mousemove(function(event){
+            var e = event || window.event; // 为了兼容ie和火狐
+            var now_l = e.clientX; // 获取当前鼠标左边距离
+            var now_t = e.clientY; // 获取当前鼠标上边距离
+            var now_L = now_l - L;
+            var now_T = now_t - T;
+            if(now_L<0){
+                now_L = 0;
+            }else if(now_L>(w_w-c_w)){
+                now_L = (w_w-c_w);
+            }
+
+            if(now_T<0){
+                now_T = 0;
+            }else if(now_T>(w_h-c_h)){
+                now_T = (w_h-c_h);
+            }
+            $('.con').css({top:now_T+'px',left:now_L+'px'});
+        });
+        $(window).mouseup(function(){
+            $(window).unbind('mousemove');
+            $(window).unbind('mouseup');
+        });
+    });
+</script>
+</body>
+</html>
