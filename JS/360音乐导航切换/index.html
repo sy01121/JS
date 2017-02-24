@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>360音乐导航切换</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="header"></div>
+<div id="box">
+    <ul>
+        <!--  href="#"默认是空 -->
+        <li class="s-li1">
+            <a href="#">我的主页</a>
+            <!-- 自定义dataSrc属性存背景图片地址 -->
+            <i dataSrc="images/1.jpg"></i>
+            <audio src="mp3/a4.mp3"></audio>
+        </li>
+        <li class="s-li2">
+            <a href="#">新闻头条</a>
+            <i dataSrc="images/2.jpg"></i>
+            <audio src="mp3/b4.mp3"></audio>
+        </li>
+        <li class="s-li3">
+            <a href="#">电视剧</a>
+            <i dataSrc="images/3.jpg"></i>
+            <audio src="mp3/c4.mp3"></audio>
+        </li>
+
+        <li class="s-li4">
+            <a href="#">最新电影</a>
+            <i dataSrc="images/4.jpg"></i>
+            <audio src="mp3/c5.mp3"></audio>
+        </li>
+        <li class="s-li5">
+            <a href="#">小游戏</a>
+            <i dataSrc="images/5.jpg"></i>
+            <audio src="mp3/d4.mp3"></audio>
+        </li>
+        <li class="s-li6">
+            <a href="#">小说大全</a>
+            <i dataSrc="images/6.jpg"></i>
+            <audio src="mp3/d5.mp3"></audio>
+        </li>
+        <li class="s-li7">
+            <a href="#">旅游度假</a>
+            <i dataSrc="images/7.jpg"></i>
+            <audio src="mp3/e4.mp3"></audio>
+        </li>
+        <li class="s-li8">
+            <a href="#">网上购物</a>
+            <i dataSrc="images/1.jpg"></i>
+            <audio src="mp3/f4.mp3"></audio>
+        </li>
+        <li class="s-li9">
+            <a href="#">好要特惠</a>
+            <i dataSrc="images/2.jpg"></i>
+            <audio src="mp3/g4.mp3"></audio>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+    // 测试引入成功jQuery
+    // alert($);
+    $('#box ul li').hover(function () {
+        /*
+        * stop([clearQueue],[jumpToEnd])
+         停止所有在指定元素上正在运行的动画。
+         如果队列中有等待执行的动画(并且clearQueue没有设为true)，他们将被马上执行
+         [queue],[clearQueue],[jumpToEnd]BooleanV1.7
+         queue:用来停止动画的队列名称
+         clearQueue:如果设置成true，则清空队列。可以立即结束动画。
+         jumpToEnd:如果设置成true，则完成队列。可以立即完成动画。
+        * */
+        // get取得所有匹配dom元素
+        $(this).find('audio').get(0).play();
+        $(this).find('i').stop(true,true).animate({'top':'1px'});
+        // 获取背景图片地址
+        var Dsrc = $(this).find('i').attr('dataSrc');
+        console.log(Dsrc);
+        $('#header').css({'background':'url("'+Dsrc+'") center no-repeat'});
+    },function () {
+        // 增加回调函数
+        $(this).find('i').animate({'top':'38px'});
+    });
+</script>
+</body>
+</html>

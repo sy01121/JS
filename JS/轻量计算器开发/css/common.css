@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#box{
+    width: 540px;
+    height: 500px;
+    background-color: #000;
+    margin: 50px auto;
+    box-shadow: 0 0 5px #000;
+}
+p.ti{
+    color: #fff;
+    font: 18px/55px "Microsoft YaHei";
+    text-indent: 30px;
+}
+.num{
+    width: 490px;
+    height: 50px;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 5px;
+    font-size: 50px;
+    text-align: right;
+}
+.but{
+    width: 490px;
+    height: 300px;
+    margin: 30px auto;
+}
+.but ul li{
+    width: 80px;
+    height: 60px;
+    box-shadow: 0 0 5px #fff;
+    list-style: none;
+    float: left;
+    margin: 9px;
+    color: #fff;
+    font-size: 22px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #212121;
+    font-family: Arial;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.but ul li.tool{
+    background-color: #EF616E;
+}
+.but ul li.tool2{
+    background-color: #FFAF3F;
+}
+p.wr{
+    color: #fff;
+    font-size: 12px;
+    text-indent: 30px;
+}

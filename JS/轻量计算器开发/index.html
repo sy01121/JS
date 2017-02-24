@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轻量计算器开发</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="box">
+    <p class="ti">潭州学院计算器</p>
+    <div class="num" id="root"></div>
+
+    <div class="but">
+        <ul>
+            <li onclick="con(this.innerHTML)">7</li>
+            <li onclick="con(this.innerHTML)">8</li>
+            <li onclick="con(this.innerHTML)">9</li>
+            <li class="tool" onclick="del('j')">←</li>
+            <li class="tool" onclick="eliminate('j')">C</li>
+            <li onclick="con(this.innerHTML)">4</li>
+            <li onclick="con(this.innerHTML)">5</li>
+            <li onclick="con(this.innerHTML)">6</li>
+            <li class="tool" onclick="operation('*','g')">*</li>
+            <li class="tool" onclick="operation('/','g')">÷</li>
+            <li onclick="con(this.innerHTML)">3</li>
+            <li onclick="con(this.innerHTML)">2</li>
+            <li onclick="con(this.innerHTML)">1</li>
+            <li class="tool" onclick="operation('+','g')">+</li>
+            <li class="tool" onclick="operation('-','g')">-</li>
+            <li onclick="con(this.innerHTML)">0</li>
+            <li>00</li>
+            <li onclick="operation1('.','g')">.</li>
+            <li class="tool" onclick="operation('%','g')">%</li>
+            <li class="tool2" onclick="equal('j')">=</li>
+        </ul>
+    </div>
+
+    <P class="wr">欢迎使用轻量级计算器！开发者：yueyue</P>
+</div>
+
+<audio src="wav/7.wav" id="Music"></audio>
+
+<script>
+    //设置开关（空白时先点击数字值为true，先点击操作符值为false）
+    var onoff = false; // 最开始关
+
+    var root = document.getElementById('root');
+    // 点击计算器执行操作
+    function con(num) {
+        var str = root.innerText;
+        // 显示处要拼接字符串(变成字符串)
+        var str1 = (str==null?'':str);
+        // 拼接点击的数字
+        str1+=num;
+        root.innerText = str1;
+        onoff = true; // 开
+        play(num);
+    }
+    
+    // 执行操作符
+    function operation(n,m) {
+        if(onoff){
+            var str = root.innerText;
+            // 显示处要拼接字符串(变成字符串)
+            var str1 = (str==null?'':str);
+            // 拼接点击的数字
+            str1+=n;
+            root.innerText = str1;
+            onoff = false; // 关
+        }
+        play(m);
+    }
+    // 执行小数点.操作符
+    function operation1(n,m) {
+        if(onoff){
+            var str = root.innerText;
+            // 显示处要拼接字符串(变成字符串)
+            var str1 = (str==null?'':str);
+            console.log(str1);
+            // 不完善
+            var reg = /^\d+(\.)?\d+[(\+)-*/%]?/g;
+            var rst = str1.match(reg);
+            console.log(rst);
+            if(rst){
+                // 拼接点击的数字
+                str1+=n;
+                root.innerText = str1;
+            }else {
+                root.innerText = str1;
+            }
+            onoff = false; // 关
+        }
+        play(m);
+    }
+
+    // 计算等于
+    function equal(m) {
+        var str = root.innerText;
+        // eval()执行里面的js代码并返回得到的结果
+        var r = eval(str);
+        root.innerText = r;
+        play(m);
+    }
+
+    // 清空
+    function eliminate(m) {
+        root.innerText = '';
+        play(m);
+    }
+
+    // 删除一个字符
+    function del(m) {
+        play(m);
+        var str = root.innerText;
+        if(str.length>1){
+            // substring() 方法用于提取字符串中介于两个指定下标之间的字符
+            var str1 = str.substring(0,str.length-1);
+            root.innerText = str1;
+        }else {
+            root.innerText = '';
+        }
+    }
+
+    // 点击播放音效
+    function play(num) {
+        var Music = document.getElementById('Music');
+        Music.src = 'wav/'+num+'.wav';
+        Music.play(); 
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
+img{
+    display: block;
+}
+#nav{
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+.header{
+    width: 890px;
+    height: 60px;
+    margin: 0 auto;
+}
+.header img{
+    float: left;
+}
+.header ul li{
+    width: 100px;
+    height: 60px;
+    float: left;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    margin: 0 5px;
+    font-weight: bold;
+}
+.header ul{
+    float: left;
+    margin-left: 20px;
+}
+.header ul li a{
+    color: #333;
+}
+
+.imgList{
+    width: 1130px;
+    height: 800px;
+    margin: 20px auto 0;
+}
+.imgList ul.tb{}
+.imgList ul.tb li{
+    width: 260px;
+    height: 260px;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 15px;
+    position: relative;
+    /*
+    transform-style 属性规定如何在 3D 空间中呈现被嵌套的元素
+    flat	子元素将不保留其 3D 位置
+    preserve-3d	子元素将保留其 3D 位置
+    */
+    transform-style: preserve-3d;
+    /*
+     定义 3D 元素距视图的距离，以像素计
+     当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身
+    */
+    perspective: 800px;
+    -webkit-perspective: 800px; /* Safari 和 Chrome */
+}
+/*  设置4的倍数的图片的样式 */
+.imgList ul.tb li:nth-child(4n){
+    margin-right: 0;
+}
+.imgList ul.tb li a img{
+    width: 260px;
+    height: 260px;
+}
+.txtBox{
+    background: url("../images/lineBg.png");
+    width: 240px;
+    height: 240px;
+    padding: 10px;
+    transform: rotateY(180deg);
+}
+.txtBox a{
+    display: block;
+    height: 180px;
+    background-color: #fff;
+    padding: 60px 25px 0;
+    text-align: center;
+    color: #333;
+    font-family: "Microsoft YaHei";
+}
+.txtBox a .type{
+    font-size: 18px;
+    font-weight: bold;
+}
+.txtBox a h3{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+.oA,.txtBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*设置旋转元素的基点位置*/
+    transform-origin: 0;
+    backface-visibility:hidden ;
+    transition: all 0.8s linear;
+}
+.imgList ul.tb li:hover .oA{
+    /*
+    transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜
+    none	定义不进行转换。	测试
+    matrix(n,n,n,n,n,n)	定义 2D 转换，使用六个值的矩阵。
+    matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)	定义 3D 转换，使用 16 个值的 4x4 矩阵。
+    translate(x,y)	定义 2D 转换。	测试
+    translate3d(x,y,z)	定义 3D 转换。
+    translateX(x)	定义转换，只是用 X 轴的值。
+    translateY(y)	定义转换，只是用 Y 轴的值。
+    translateZ(z)	定义 3D 转换，只是用 Z 轴的值。
+    scale(x,y)	定义 2D 缩放转换。
+    scale3d(x,y,z)	定义 3D 缩放转换。
+    scaleX(x)	通过设置 X 轴的值来定义缩放转换。
+    scaleY(y)	通过设置 Y 轴的值来定义缩放转换。
+    scaleZ(z)	通过设置 Z 轴的值来定义 3D 缩放转换。
+    rotate(angle)	定义 2D 旋转，在参数中规定角度。
+    rotate3d(x,y,z,angle)	定义 3D 旋转。
+    rotateX(angle)	定义沿着 X 轴的 3D 旋转。
+    rotateY(angle)	定义沿着 Y 轴的 3D 旋转。
+    rotateZ(angle)	定义沿着 Z 轴的 3D 旋转。
+    skew(x-angle,y-angle)	定义沿着 X 和 Y 轴的 2D 倾斜转换。
+    skewX(angle)	定义沿着 X 轴的 2D 倾斜转换。
+    skewY(angle)	定义沿着 Y 轴的 2D 倾斜转换。
+    perspective(n)	为 3D 转换元素定义透视视图。
+    */
+    transform: rotateY(180deg);
+}
+.imgList ul.tb li:hover .txtBox{
+    transform: rotateY(360deg);
+}

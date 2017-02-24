@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度预览换肤系统</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="bg">
+        <span>换肤</span>
+
+        <div class="header">
+            <div class="menu">
+                <div class="title">
+                    <p class="p1"></p>
+                    <p class="p2"></p>
+                </div>
+                <!-- 展示换肤小块列表 -->
+                <div class="bgli">
+                    <!-- left -->
+                    <div class="bgcon">
+                        <img src="images/0.jpg" class="big">
+                        <img src="images/1.jpg">
+                        <img src="images/2.jpg">
+                        <img src="images/3.jpg">
+                        <img src="images/4.jpg">
+                        <img src="images/5.jpg">
+
+                        <img src="images/6.jpg" class="big">
+                        <img src="images/7.jpg">
+                        <img src="images/8.jpg">
+                        <img src="images/9.jpg" class="last">
+                        <img src="images/10.jpg" class="last">
+                        <img src="images/11.jpg" class="last">
+                    </div>
+                    <!-- right -->
+                    <div class="conyl">
+                        <img src="images/yl.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="con">
+            <img src="images/content.png">
+        </div>
+    </div>
+</div>
+
+<!-- 引入JS文件  -->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script>
+    $(function ($) {
+        // 测试引入的JS是否成功
+        // alert($);
+        // 设置图片下标的全局变量
+        var nums = 0;
+        $('span').click(function () {
+            $('.header').animate({height:'270px'},500).show();
+        });
+        $('.p2').click(function () {
+            $('.header').animate({height:'0px'},500).hide(500);
+        });
+        //  图片预览区图片展示
+        $('.bgcon img').hover(function () {
+            nums = $(this).index(); // 获取当前图片的下标
+            $('.conyl').css({'background':'url("images/'+nums+'.jpg") center no-repeat'});
+        });
+        // 整个页面换肤
+        $('.bgcon img').click(function () {
+            nums = $(this).index(); // 获取当前图片的下标
+            $('.bg').css({'background':'url("images/bg'+nums+'.jpg")','background-size': 'cover','-moz-background-size': 'cover','-webkit-background-size': 'cover','-o-background-size': 'cover'});
+        })
+    })
+</script>
+</body>
+</html>
