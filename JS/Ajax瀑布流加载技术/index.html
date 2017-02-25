@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax瀑布流加载技术</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="wrap">
+    <ul>
+        <!-- li里面的内容 -->
+        <!--<div class="con">-->
+        <!--<img src="img/1.jpg">-->
+        <!--&lt;!&ndash; href="#"阻止a标签跳转 &ndash;&gt;-->
+        <!--<a href="#">又有哪些明星穿了FOREVER</a>-->
+        <!--<p>阅读全文</p>-->
+        <!--</div>-->
+        <li></li>
+        <li style="margin:0 20px;"></li>
+        <li></li>
+    </ul>
+    <div style="clear: both"></div>
+    <input type="button" value="加载更多" id="btn">
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+/*
+* 1.图片的路径 2.a标签里面的文字
+* */
+var oLi = document.getElementById('wrap').getElementsByTagName('li');
+// console.log(oLi.length); // 3
+var btn = document.getElementById('btn');
+// 图片加载数量变量
+var num = 0;
+load(num);
+btn.onclick = function () {
+    num += 3;
+    load(num);
+};
+function load(num) {
+    $.ajax({
+        type: "POST",
+        async: true,
+        url: "data.js",
+        success: function(msg){
+            //console.log( typeof msg ); // string
+            // eval()按js代码格式读取里面的值（要小心用eval('('+res+')')变成表达式去读）
+            var data = eval('('+msg+')');
+            // console.log(data); // [Object, Object...]
+            // data.constructor看一下构造函数
+            // console.log(data.constructor); // fuction Array() { [native code] }
+            // var src = data[0].src;
+            // console.log(src);  // img/1.jpg
+            // alert(data.length); // 50
+            if(num >= data.length){
+                alert('图片已经加载完毕！');
+                btn.innerHTML = '没有更多了';
+                btn.style.cursor = 'not-allowed';
+            }else {
+                for(var i=num;i<num+3;i++){
+                    var src = data[i].src;
+                    var title = data[i].title;
+                    btn.innerHTML = '加载更多';
+                    btn.style.cursor = 'pointer';
+                    // var html = '<div class="con"><img src="'+src+'"><!-- href="#"阻止a标签跳转 --><a href="#">'+title+'</a><p>阅读全文</p></div>';
+                    // console.log(html);
+                    // oLi[getShort()].innerHTML += html;
+                    // 图片预加载
+                    var oImg = new Image();
+                    oImg.src = src; // 过程已经在加载图片
+                    oImg.onload = function () {
+                        // oImg变成对象不能使用html代码拼接，需要新建对象
+                        var oDiv = document.createElement('div');
+                        var oA = document.createElement('a');
+                        var oP = document.createElement('p');
+                        oDiv.className = 'con';
+                        oA.href = '#';
+                        // 普通文本元素添加用 oA.innerHTML = '';
+                        oA.innerHTML = title;
+                        oP.innerHTML = '阅读全文';
+                        // 添加js对象用.appendChild()方法
+                        // 用this关键词指代调用此方法的oImg对象，直接用oImg就指代循环完后的第3个图片对象
+                        oDiv.appendChild(this);
+                        oDiv.appendChild(oA);
+                        oDiv.appendChild(oP);
+                        oLi[getShort()].appendChild(oDiv);
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 瀑布流效果（每次往最短的li里放置内容）
+    function getShort() {
+        var index = 0;
+        // offsetHeight=边框线+padding+内容
+        // clientHeight=padding+内容
+        var iH = oLi[index].offsetHeight;
+        for(var i=0;i<oLi.length;i++){
+            if(oLi[i].offsetHeight < iH){
+                index = i;
+                iH = oLi[index].offsetHeight;
+            }
+        }
+        return index;
+    }
+
+</script>
+</body>
+</html>
