@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
+/* img默认是内联（行内）元素，默认有个换行间距
+   img display: block; 去除换行间距
+*/
+/*
+display: block;块级元素（占满一行，可以设置宽高度）
+display: inline;行内元素（在一行之内显示，显示不下了才换行显示，不可以设置宽高度）
+display: inline-block;行内块级元素（即可以在一行之内显示，又可以设置宽高度）
+行内元素：添加浮动或者定位（元素原有的属性均消失）也可以给它设置宽高
+*/
+img {
+    /*display: block; !* 方法一：改成 块级元素 *!*/
+    /*float: left;  !* 方法二：改成 浮动 *!*/
+    /*position: absolute; !* 方法三：定位 *!*/
+    /* 图片默认的对齐方式是：垂直居中对齐 */
+    vertical-align: top; /* 方法四：调整默认对齐方式 */
+    border: 0; /* 兼容IE（IE默认添加border） */
+}
+#wrap{
+    width: 726px;
+    height: 630px;
+    margin: 0 auto;
+}
+.content{
+    width: 100%;
+    height: 535px;
+    background: url("../images/1.jpg") no-repeat;
+}
+.content ul li{
+    width: 70px;
+    height: 50px;
+    background-color: #ccc;
+    margin-bottom: 1px;
+    opacity: 0.8;
+    color: #000;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.content ul li.s-zuerst/* ,.content ul li:hover */{
+    width: 58px;
+    padding-right: 6px;
+    color: #90f;
+    border-left: 6px solid #90f;
+}

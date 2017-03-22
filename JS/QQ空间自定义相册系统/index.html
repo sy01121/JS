@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ空间自定义相册系统</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+<!-- 小图片列表 -->
+<div class="box">
+    <!-- 四要素 src with="宽度" height="高度" alt="描述" -->
+    <img src="img/1.jpg">
+    <img src="img/2.jpg">
+    <img src="img/3.jpg">
+    <img src="img/4.jpg">
+    <img src="img/5.jpg">
+    <img src="img/6.jpg">
+    <img src="img/7.jpg">
+    <img src="img/8.jpg">
+    <img src="img/9.jpg">
+    <!--  大图展示图 -->
+    <div class="showImg">
+        <img src="img/9.jpg" class="bigImg1">
+        <img src="img/1.jpg" class="bigImg2">
+        <!--<img src="img/2.jpg" class="bigImg3">-->
+        <span class="dirl"></span>
+        <span class="dirr"></span>
+    </div>
+</div>
+<!--
+底部遮罩层背景，与大图展示区域（包括展示大图、左右箭头）必须分开
+用处：做大点击遮罩层，隐藏遮罩层与大图展示区域做准备
+如果：大图展示区域在遮罩层里面，
+      做上下张切换箭头点击效果相当于点击了遮罩层，无法达到图片上下张切换效果，
+      大图展示连同遮罩层一起隐藏
+结果：遮罩层 与 大图展示区域 最好分开，各是各的，做点击 遮罩层效果，大图展示区域不受影响
+-->
+<!-- 遮罩层 -->
+<div class="gray"></div>
+
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    // alert($);
+    // bigSrc、_index设成全局变量，多个方法里都能用
+    // 存储大图地址
+    var bigSrc = '';
+    // 存储序列号
+    var _index = 0;
+    // 旧图片地址
+    var bigSrcOld = '';
+    $('.box img').click(function () {
+        _index = $(this).index();
+        // alert('测试小图片点击');
+        $('.gray').show();
+        $('.showImg').show();
+        // 获取被点击当前图片的地址
+        bigSrc = $(this).prop('src');
+        // alert(bigSrc);
+        $('.showImg img.bigImg1').prop('src',bigSrc);
+        $('.showImg img.bigImg2').prop('src',bigSrc);
+//        // 获得左图地址并赋值
+//        var _indexLeft = _index-1;
+//        console.log(_indexLeft);
+//        if(_indexLeft < 0){_indexLeft = 8;}
+//        var bigSrcLeft = $('.box img').eq(_indexLeft).prop('src');
+//        $('.showImg img.bigImg1').prop('src',bigSrcLeft);
+//        // 获得右图地址并赋值
+//        var _indexRight = _index+1;
+//        console.log(_indexRight);
+//        if(_indexRight > 8){_indexRight = 0;}
+//        var bigSrcRight = $('.box img').eq(_indexRight).prop('src');
+//        $('.showImg img.bigImg3').prop('src',bigSrcRight);
+    });
+
+    // 下一张
+    $('.showImg .dirr').click(function () {
+        // alert('123');
+//        $('.showImg img.bigImg1').prop('src',bigSrcOld);
+//        $('.showImg img.bigImg1').css('z-index','4');
+        // 翻页效果
+         _index++;
+        if(_index > 8){_index = 0;};
+        bigSrcOld = $('.box img').eq(_index).prop('src');
+        console.log(bigSrcOld);
+        $('.showImg img.bigImg1').stop(true,true).animate({'left':'650px','z-index':'0'},1000,function () {
+            $(this).stop(true,true).animate({'left':'0'},1000,function () {
+//                $(this).animate({'src':bigSrcOld,'z-index':'4'},1000);
+                $(this).prop('src',bigSrcOld).css('z-index','4');
+            });
+        });
+        bigSrc = $('.box img').eq(_index).prop('src');
+        $('.showImg img.bigImg2').prop('src',bigSrc);
+        // 普通效果
+        // _index++;
+//        if(_index > 8){_index = 0;};
+//        bigSrc = $('.box img').eq(_index).prop('src');
+//        $('.showImg img.bigImg1').prop('src',bigSrc);
+    });
+    // 上一张
+    $('.showImg .dirl').click(function () {
+        _index--;
+        if(_index < 0){_index = 8;};
+        bigSrcOld = $('.box img').eq(_index).prop('src');
+        $('.showImg img.bigImg1').stop(true,true).animate({'left':'-650px','z-index':'0'},1000,function () {
+            $(this).stop(true,true).animate({'left':'0'},1000,function () {
+                $(this).prop('src',bigSrcOld).css('z-index','4');
+            });
+        });
+        bigSrc = $('.box img').eq(_index).prop('src');
+        $('.showImg img.bigImg2').prop('src',bigSrc);
+        // 普通效果
+//        _index--;
+//        if(_index < 0){_index = 8;};
+//        bigSrc = $('.box img').eq(_index).prop('src');
+//        $('.showImg img.bigImg').prop('src',bigSrc);
+    });
+    $('.gray').click(function () {
+        $(this).hide();
+        $('.showImg').hide();
+    });
+</script>
+</body>
+</html>

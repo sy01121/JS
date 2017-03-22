@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IOS相册系统</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+<h1>iphone相册展示系统</h1>
+<!-- 给#pic设置一个固定宽度，用js控制它的中心位置 -->
+<div id="pic">
+    <img src="img/1.jpg" class="left">
+    <img src="img/2.jpg" class="left">
+    <img src="img/3.jpg" class="left">
+    <img src="img/4.jpg" class="left">
+    <img src="img/5.jpg" class="now">
+    <img src="img/6.jpg" class="right">
+    <img src="img/7.jpg" class="right">
+    <img src="img/8.jpg" class="right">
+    <img src="img/9.jpg" class="right">
+</div>
+
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script>
+    // 测试jQuery是否引入成功
+    // alert($)
+    // 设置数组存储每个图片的left距离
+    var imgL = [];
+    var oM = 4; //定义被点击之前中间大图的序列号
+    for(var i=0;i<9;i++){
+        // parseInt()左距离取整
+        imgL[i] = parseInt($('img').eq(i).css('left'));
+    }
+    // console.log(imgL);
+    // 现在是往左
+    $('#pic img').click(function () {
+        // 获取点击图片的序列号
+        var _index = $(this).index();
+        // alert(_index);
+        // 向左
+        for(var i=0;i<9;i++){
+            imgL[i] = imgL[i]-200*(_index-oM);
+//            console.log(imgL);
+            // 图片移动
+            $('img').eq(i).css('left',imgL[i]+'px');
+        };
+        for(var i=0;i<9;i++){
+            $('img').eq(i).removeClass().addClass('left');
+        };
+        for(var i=oM;i<9;i++){
+            $('img').eq(i).removeClass().addClass('right');
+        }
+        $(this).removeClass().addClass('now');
+        oM = _index;
+    });
+</script>
+</body>
+</html>

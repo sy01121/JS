@@ -1,0 +1,93 @@
+/*  css */
+*{
+    margin:0px;
+    padding:0px;
+    font-family: "Microsoft YaHei";
+}/*通配符  */
+body{
+    background: url("../img/bg.png") center repeat;
+}
+#wrap{
+    width: 940px;
+    height: 610px;
+    margin: 100px auto;
+}
+#wrap ul li{
+    width: 235px;
+    height: 610px;
+    float: left;
+    list-style: none;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.info{
+    width: 200px;
+    height: 140px;
+    margin: 450px auto 0;
+    color: #fff;
+    background-color: rgba(0,0,0,0.5);
+}
+.info h3{
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+.info p{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 8px;
+}
+.cover{
+    width: 200px;
+    height: 140px;
+    background-color: #E7E7E7;
+    position: absolute;
+    top: 450px;
+    /*  绝对居中 */
+    left: 50%;
+    margin-left: -100px;
+    text-indent: 20px;
+    /* 盒子阴影 */
+    /* 水平、垂直方向不偏移 宽度：5px 颜色：#fff */
+    box-shadow: 0 0 5px #fff;
+    opacity: 0;
+}
+.cover .p1{
+    line-height: 35px;
+    font-size: 14px;
+    border-bottom: 1px solid #d4d4d4;
+}
+.cover .p2{
+    font-size: 12px;
+    padding-top: 5px;
+    border-top: 1px solid #f1f1f1;
+}
+.cover .p3{
+    font-size: 12px;
+    padding: 5px 0 25px;
+    border-bottom: 1px solid #d4d4d4;
+}
+.cover .p4{
+    font-size: 12px;
+    color: #4B8FD0;
+    border-top: 1px solid #f1f1f1;
+}
+/* 方法一：直接用CSS3实现 */
+/*.cover{*/
+     /*top: 470px;*/
+     /*!* 同时包括：位置和透明度的变换 *!*/
+     /*transition: 0.5s;*/
+ /*}*/
+/*#wrap ul li{*/
+    /*transition: 0.5s;*/
+/*}*/
+/*#wrap ul li:hover{*/
+    /*opacity: 1;*/
+/*}*/
+/*#wrap ul li:hover .cover{*/
+    /*top: 450px;*/
+    /*opacity: 1;*/
+/*}*/

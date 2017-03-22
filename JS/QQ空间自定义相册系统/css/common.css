@@ -1,0 +1,81 @@
+/*  css */
+*{
+    margin:0px;
+    padding:0px;
+    font-family: "Microsoft YaHei";
+}/*通配符  */
+body{
+    background-color: #E9E9E9;
+}
+.box{
+    width: 870px;
+    height: 570px;
+    margin: 150px auto 0;
+    position: relative;
+}
+.box img{
+    width: 280px;
+    height: 167px;
+    float: left;
+    border: 5px dotted #fff;
+    cursor: pointer;
+}
+/* 遮罩层 */
+.gray{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    /* 固定定位 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+/*  大图展示 */
+.showImg{
+    width: 650px;
+    height: 406px;
+    border: 10px solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -325px;
+    margin-top: -203px;
+    display: none;
+    z-index: 1;
+}
+.showImg .bigImg1,.showImg .bigImg2,.showImg .bigImg3{
+    width: 650px;
+    height: 406px;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*z-index: 5;*/
+    z-index: 3;
+}
+.showImg .bigImg1,.showImg .bigImg3{
+    z-index: 4;
+}
+.showImg span{
+    display: inline-block;
+    width: 44px;
+    height: 74px;
+    cursor: pointer;
+}
+.showImg .dirl{
+    background: url("../img/arrow.png") no-repeat;
+    background-position: 0px -88px;
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    margin-top: -37px;
+}
+.showImg .dirr{
+    background: url("../img/arrow.png") no-repeat;
+    background-position: 0 0;
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    margin-top: -37px;
+}

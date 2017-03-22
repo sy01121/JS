@@ -1,0 +1,74 @@
+/*  css */
+*{
+    margin:0px;
+    padding:0px;
+    font-family: "Microsoft YaHei";
+}/*通配符  */
+body{
+    background-color: #000;
+}
+h1{
+    text-align: center;
+    /* 字体阴影 竖直方向 水平方向 模糊程度 */
+    text-shadow: 3px 3px 3px #fff;
+    line-height: 200px;
+    color: #fff;
+}
+#pic{
+    width: 100%;
+    /* 相对定位 */
+    position: relative;
+    /* 提供一个3D环境 */
+    transform-style: preserve-3d;
+    /* 景深(站得越近，看到的越少；站得越远，看到的越多) */
+    perspective: 800px;
+    margin: 60px auto;
+}
+#pic img{
+    width: 300px;
+    height: 230px;
+    /* 绝对定位 */
+    position: absolute;
+    /* 给图片运动加缓冲(时间过渡) */
+    transition: all 0.5s linear;
+    cursor: pointer;
+    /* 添加倒影 线性倒影 方向top  */
+    -webkit-box-reflect:below 20px -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0.5)),to(rgba(0,0,0,0.1)));
+}
+#pic img:nth-child(1){
+    left: 100px;
+}
+#pic img:nth-child(2){
+    left: 300px;
+}
+#pic img:nth-child(3){
+    left: 500px;
+}
+#pic img:nth-child(4){
+    left: 700px;
+}
+#pic img:nth-child(5){
+    left: 900px;
+}
+#pic img:nth-child(6){
+    left: 1100px;
+}
+#pic img:nth-child(7){
+    left: 1300px;
+}
+#pic img:nth-child(8){
+    left: 1500px;
+}
+#pic img:nth-child(9){
+    left: 1700px;
+}
+.left{
+    /* 沿Z轴向里旋转100像素 沿Y轴旋转45度*/
+    transform: translateZ(-100px) rotateY(45deg);
+}
+.now{
+    transform: translateZ(100px);
+}
+.right{
+    transform: translateZ(-100px) rotateY(-45deg);
+}

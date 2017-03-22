@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左侧列表图片内容切换</title>
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 页面标题添加图标 -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+<div id="wrap">
+    <img src="images/title.png">
+    <div class="content">
+        <ul>
+            <!-- 给li自定义个属性（存放对应图片的地址） -->
+            <li dataSrc="images/1.jpg" class="s-zuerst">态度</li>
+            <li dataSrc="images/2.jpg">最前沿</li>
+            <li dataSrc="images/3.jpg">最话题</li>
+            <li dataSrc="images/4.jpg">事件</li>
+            <li dataSrc="images/5.jpg">推荐</li>
+            <li dataSrc="images/6.jpg">尚惠</li>
+        </ul>
+    </div>
+</div>
+
+<!-- .content背景图片地址随文字导航变换  -->
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    // 验证jQuery已经成功插入
+    // alert($); // 成功
+
+    // 设置数组存放图片路径（dataSrc）
+    var src = [];
+    $('.content ul li').each(function () {
+        var s = $(this).attr('dataSrc');
+        src.push(s);
+    });
+    console.log(src);
+
+    $('.content ul li').hover(function () { // 鼠标滑上去实现什么功能（函数）
+        // alert(1);
+        // 方法一
+//        var index = $(this).index(); // 获取到对应li的索引值
+//        $('.content').css('background','url(images/'+(index+1)+'.jpg) no-repeat');
+
+        // 方法二（无法改变图片名称时）
+//        var src = $(this).attr('dataSrc'); // 获取自定义属性只能用attr
+//        $('.content').css('background','url('+src+') no-repeat');
+
+        // 方法三（图片很多）
+        var index = $(this).index();
+        $('.content').css('background','url('+src[index]+') no-repeat');
+        // 随右侧图片变换，左侧定位li的样式随之变换
+        $('.content ul li').css({'width':'70px','padding-right':'0','color':'#000','border':'none'});
+        $('.content ul li').eq(index).css({'width':'58px','padding-right':'6px','color':'#90f','border-left':'6px solid #90f'});
+    });
+
+    // 自动播放
+    // 初始化数组序列号
+    var i = 0
+    setInterval(function () {
+        i++;
+        // 方法一：if条件判断
+//        if(i > (src.length-1)){
+//            i = 0;
+//        }
+        // 方法二：（取余算法）
+        i %= (src.length); // i/(src.length) = ?余数为多少
+        $('.content').css('background','url('+src[i]+') no-repeat');
+        // 随右侧图片变换，左侧定位li的样式随之变换
+        $('.content ul li').css({'width':'70px','padding-right':'0','color':'#000','border':'none'});
+        $('.content ul li').eq(i).css({'width':'58px','padding-right':'6px','color':'#90f','border-left':'6px solid #90f'});
+    },1000); // 单位：毫秒
+</script>
+</body>
+</html>

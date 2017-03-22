@@ -1,0 +1,88 @@
+/*写CSS层叠样式列表的  工厂 美化*/
+*{margin:0px;padding:0px;font-family:"微软雅黑";}/*通配符  */
+body{
+    /*  background-attachment:fixed 随着页面的滚动轴背景图片不会移动 */
+    background:url("../images/bg4.jpg") fixed no-repeat;/*背景*/
+    background-size:cover;/*背景图片的大小  cover刚刚好铺满*/
+}
+#Teacher{
+    width:300px;/*宽度 px像素*/
+    height:100px;/*高度*/
+    margin:0px auto;/*上 左右边距自动相等 下*/}
+#Teacher dl{
+    width:100px;
+    height:130px;
+    padding:10px;/*内边距会改变盒子的大小*/
+    background:#fff;
+}
+#Teacher dl dt{
+    width:100px;
+    height:100px;
+}
+#Teacher dl dd{
+    width:100px;
+    height:30px;
+    font-size:12px;/*字体大小*/
+    text-align:center;/*文本居中*/
+    line-height:30px;/*行高*/
+    /*font-family:"微软雅黑";字体样式*/
+}
+#Teacher ul{
+    width:300px;
+    /*自适应高度:不写高度 或者 height: auto*/
+    height: auto;
+    margin-left:50px;
+    border-left:3px solid #0066ff;/*左边框 粗细  样式 边框颜色 */
+    padding-top:30px;
+}
+#Teacher ul li{
+     list-style-type:none;/*去圆点*/
+    width:300px;
+    position:relative;/*相对定位 参考点*/
+    margin-top:50px;
+    -webkit-animation:sc 2s;
+    display:none;
+}
+#Teacher ul li .tx{
+    width:120px;
+    height:120px;
+    border-radius:50%;/*CSS3  圆角边框*/
+    /*overflow:hidden;超出部分隐藏*/
+    position:absolute;/*绝对定位 改变哪个盒子的位置就给绝对定位*/
+    left:-123px;
+}
+#Teacher ul li .tx img{border-radius:50%;}
+#Teacher ul li span{
+    width:6px;
+    height:6px;
+    background:#00cc00;
+    border-radius:10px;
+    border:2px solid #fff;
+    position:absolute;
+    left:-6px;
+    top:54px;
+}
+
+#Teacher ul li .Info{
+    width:270px;
+    background:rgba(255,255,255,0.8);
+    margin-left:16px;
+    padding:15px;
+    font-size:12px;
+    line-height:25px;
+    border-radius:10px;
+}
+#Teacher ul li img.mark{
+    position:absolute;
+    left:3px;
+    top:50px;
+}
+#Teacher ul li.odd .tx{left:3px;}
+#Teacher ul li.odd .Info{margin-left:-318px;}
+#Teacher ul li.odd img.mark{left:-20px;}
+
+/*CSS3动画*/
+@-webkit-keyframes sc{
+    from{-webkit-transform:rotate(220deg)/*旋转度数*/ scale(0.2)/*缩放*/;}
+    to{-webkit-transform:rotate(0deg)/*旋转度数*/ scale(1);}
+}

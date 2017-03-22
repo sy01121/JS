@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
+img{
+    display: block;
+}
+body{
+    background: url("../images/bodyBg.jpg");
+}
+#box{
+    width: 980px;
+    height: 500px;
+    margin: 100px auto;
+}
+/* 每个图标背景都是由3个相同的半透明长方形倾斜而成 */
+#box ul li{
+    width: 180px;
+    height: 106px;
+    background-color: rgba(0,0,0,0.8);
+    float: left;
+    margin: 30px 5px;
+    position: relative;/* （相对定位）定位的参考物 */
+}
+/* 形成5-4-5布局 */
+#box ul li.curr{
+    margin-left: 100px;
+}
+/*
+伪类：
+after:在元素的内容（包括文本内容+html内容）后面添加内容，相当于添加一个行内元素
+before:在元素的内容（包括文本内容+html内容）前面添加内容，相当于添加了一个行内元素
+*/
+/* 相当于行内元素，设置宽高无效 */
+/* li:after\li:before属于li的子元素 */
+#box ul li:after{
+    /* content属性有没有内容都要填写 */
+    content: '';
+    display: block;
+    width: 180px;
+    height: 106px;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 旋转 */
+    transform: rotate(60deg);
+}
+#box ul li:before{
+    content: '';
+    display: block;
+    width: 180px;
+    height: 106px;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 旋转 */
+    transform: rotate(-60deg);
+}
+/* 先从数据库把图片下载下来，再计算图片的宽高显示出来，现设好宽高，就不需计算，提高页面加载速度 */
+#box ul li img{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 2;/* 定位的层级 */
+    /*  第一种居中方法 */
+    /*margin: 13px 50px;*/
+    /*  第二种方法(不受父元素宽高变动的限制) */
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin-top: -40px;*/
+    /*margin-left: -40px;*/
+    /* 第三种方法(定位4个方位浏览器发生紊乱，再设margin: auto;居中实现) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s; ;
+    cursor: pointer;
+}
+#box ul li img:hover{
+    /* 旋转360度放大1.5倍 */
+    transform: rotate(360deg) scale(1.5);
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影网站列表展示页</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+<div id="wrap">
+    <ul>
+        <li style="background: url('img/1.jpg')">
+            <div class="info">
+                <h3>《小时代：青木时代》</h3>
+                <p>2013-08-09</p>
+                <p>友情入泥沼 平地起波澜</p>
+            </div>
+            <div class="cover">
+                <p class="p1">友谊挑战人性的暗黑面</p>
+                <p class="p2">导演：郭敬明</p>
+                <p class="p3">主演：杨幂 / 郭采洁 / 郭碧婷</p>
+                <p class="p4">1680人想看</p>
+            </div>
+        </li>
+        <li style="background: url('img/2.jpg')">
+            <div class="info">
+                <h3>《小时代：青木时代》</h3>
+                <p>2013-08-09</p>
+                <p>友情入泥沼 平地起波澜</p>
+            </div>
+            <div class="cover">
+                <p class="p1">友谊挑战人性的暗黑面</p>
+                <p class="p2">导演：郭敬明</p>
+                <p class="p3">主演：杨幂 / 郭采洁 / 郭碧婷</p>
+                <p class="p4">1680人想看</p>
+            </div>
+        </li>
+        <li style="background: url('img/3.jpg')">
+            <div class="info">
+                <h3>《小时代：青木时代》</h3>
+                <p>2013-08-09</p>
+                <p>友情入泥沼 平地起波澜</p>
+            </div>
+            <div class="cover">
+                <p class="p1">友谊挑战人性的暗黑面</p>
+                <p class="p2">导演：郭敬明</p>
+                <p class="p3">主演：杨幂 / 郭采洁 / 郭碧婷</p>
+                <p class="p4">1680人想看</p>
+            </div>
+        </li>
+        <li style="background: url('img/4.jpg')">
+            <div class="info">
+                <h3>《小时代：青木时代》</h3>
+                <p>2013-08-09</p>
+                <p>友情入泥沼 平地起波澜</p>
+            </div>
+            <div class="cover">
+                <p class="p1">友谊挑战人性的暗黑面</p>
+                <p class="p2">导演：郭敬明</p>
+                <p class="p3">主演：杨幂 / 郭采洁 / 郭碧婷</p>
+                <p class="p4">1680人想看</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- 方法二：用jQuery实现（不推荐，能用CSS实现的不要用JS） -->
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    // 两个function，一个鼠标移入function，一个鼠标移出function
+    $('#wrap ul li').hover(function () {
+        /*
+        * 出现问题：鼠标快速划过，鼠标移开动画还在不停执行
+        * 原因：（事件没有执行完成）鼠标移走动画还在按步骤执行
+        * 解决方法：下一个动画要执行(之前)的时候，清除掉前面所有的动画
+        * 使用：stop(true)
+        * */
+        $(this).stop(true).animate({
+            opacity : 1
+        },500); // 单位ms
+//        出现同样问题：鼠标快速划过，鼠标移开动画还在不停执行
+        $(this).find('.cover').stop(true).animate({
+            opacity : 1,
+            top : '450px'
+        },500);
+    },function () {
+        $(this).stop(true).animate({
+            opacity : 0.5
+        },500); // 单位ms
+        $(this).find('.cover').stop(true).animate({
+            opacity : 0,
+            top : '470px'
+        },500);
+    });
+</script>
+</body>
+</html>
