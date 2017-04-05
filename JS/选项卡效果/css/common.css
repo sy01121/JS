@@ -1,0 +1,80 @@
+/*  css */
+*{
+    margin:0px;
+    padding:0px;
+    font-family: "Microsoft YaHei";
+}/*通配符  */
+ul,li{
+    list-style: none;
+}
+#box{
+    width: 880px;
+    height: 500px;
+    margin: 20px auto 0;
+    border: 1px solid #999;
+}
+/* 左边按钮部分 */
+.but{
+    width: 178px;
+    height: 500px;
+    float: left;
+    border-right: solid 1px #999;
+}
+.but ul li{
+    border-bottom: 1px solid #999;
+    font-size: 14px;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    /* 参考对象 */
+    position: relative;
+}
+.but ul li .icon{
+    /* 绝对定位 */
+    position: absolute;
+    top: 15px;
+    right: -14px;
+    display: none;
+}
+.but ul .active{
+    color: red;
+    background-color: #efefef;
+}
+.but ul .active img{
+    display: block;
+}
+
+/* 右边详细位置展示部分 */
+.con{
+    width: 700px;
+    height: 500px;
+    float: right;
+}
+.con .list{
+    width: 700px;
+    height: 500px;
+}
+.con .list ul li{
+    width: 180px;
+    height: 230px;
+    float: left;
+    margin: 10px 15px;
+    padding: 0 10px;
+}
+.con .list ul li img{
+    width: 180px;
+    height: 180px;
+}
+.con .list ul li p{
+    font-size: 14px;
+    color: #666;
+    line-height: 30px;
+    margin-top: 5px;
+}
+.con .list ul li p span{
+    float: right;
+    color: red;
+}
+.con .list{
+    display: none;
+}

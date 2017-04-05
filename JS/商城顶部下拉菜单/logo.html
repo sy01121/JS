@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>商城顶部下拉菜单</title>
+
+<style type="text/css">
+*{margin:0px; padding:0px;}
+/*阿里图标库*/
+@font-face {font-family: 'iconfont';
+    src: url('iconfont/iconfont.eot'); /* IE9*/
+    src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:25px; color:#fff; padding-right:10px;}
+
+
+#Logo{width:100%;/*宽*/ height:50px;/*高*/ background:#000;/*背景颜色*/margin-top:100px; }
+#Logo ul{width:1000px; height:50px; margin:0px auto;}
+#Logo ul li{ height:50px;list-style-type:none;/*去掉圆点*/ float:left;/*左浮动*/ color:#fff;font-size:16px; font-family:"微软雅黑"; line-height:50px;}
+#Logo ul li a{color:#fff; text-decoration:none;/*去掉下划线*/ display:block; 
+					padding:0px 30px;}
+#Logo ul li a:hover{background:#ff6699;}
+#Logo ul li.first{width:200px; background:#ff6699; text-indent:50px;position:relative;}
+#Logo ul li.first .Menu{width:1000px; height:300px; background:#fff; 
+				position:absolute;/*绝对定位*/ top:50px; left:0px; display:none;}
+
+</style>
+
+ </head>
+ <body>
+  
+<!-- div 盒子模型 ，高度，宽度，放内容的长方形 姓名=“张三”-->
+<div id="Logo">
+	<ul>
+		<li class="first"><font class="iconfont">&#xe692;</font>全部礼物分类
+			<div class="Menu"></div>
+		</li>
+		<li><a href="#">首页</a></li>
+		<li><a href="#">节日礼物</a></li>
+		<li><a href="#">生日礼物</a></li>
+		<li><a href="#">蛋糕</a></li>
+		<li><a href="#">商务礼物</a></li>
+		<li><a href="#">个性定制</a></li>
+		<li><a href="#">鲜花</a></li>
+	</ul>
+</div>
+
+<img src="images/banner.jpg" />
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	$("#Logo ul li.first").hover(function(){
+		//当鼠标移动到上面时
+		$(this).find(".Menu").stop(true,true).slideDown();
+
+	},function(){
+		//当鼠标移开之后
+		$(this).find(".Menu").slideUp();
+	});
+</script>
+
+
+
+<!--
+
+	1、如何在页面当中，构建一个宽度，高度的长方形(div盒子模型)
+	2、讲到了外边距的概念 margin， 解决了外边距的兼容型问题 *{margin:0px;}
+	3、讲到 ul无序列表标签 <ul>
+								<li>11111</li>
+								<li>11111</li>
+						   </ul>
+	4、给 ul添加宽度，高度，然后利用外边距设置他在水平方向距 margin:上下(0px) 左右(auto);
+	5、讲到了内边距的概念 padding , 解决了内边距的兼容问题 *{padding:0px;}
+	6、利用 浮动的概，float:left; 使 li（小长方形），从竖直变成水平
+	7、控制 li里面文字样式（颜色，大小，字体类型，竖直距中，水平中间）
+
+-->
+
+ </body>
+</html>
